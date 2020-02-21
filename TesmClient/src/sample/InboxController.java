@@ -68,7 +68,8 @@ public class InboxController {
             public void handle(KeyEvent event) {
                 if(event.getCode().equals(KeyCode.ENTER)){
                     String s = inputTA.getText();
-                    outputTA.appendText(name+": "+s); //removed "\n" because this will enter and create "\n" before reaching this code and will result us in two spaces with the "\n" included in the code
+                    s = s.substring(0,s.length()-1);
+                    outputTA.appendText(name+": "+s+"\n"); //removed "\n" because this will enter and create "\n" before reaching this code and will result us in two spaces with the "\n" included in the code
                     try {
                         oos.writeObject(s);
                     } catch (IOException e) {
