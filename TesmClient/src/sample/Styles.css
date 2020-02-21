@@ -1,0 +1,23 @@
+.button{
+    -fx-background-color: lightblue;
+}
+
+.button:hover{
+    -fx-background-color: #399be6;
+}
+
+.label{
+    -fx-text-fill: black;
+}
+.label:hover {
+    -fx-text-fill: #399be6;
+}
+
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
