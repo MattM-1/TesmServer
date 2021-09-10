@@ -7,4 +7,6 @@
 *.?ml
 
 #MacOS
-*.DS_Store
+.DS_Store
+
+*.kotlin_module
