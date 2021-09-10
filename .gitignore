@@ -3,7 +3,8 @@
 
 #JetBrains
 **/.idea
-*.iml
+#should ignore xml and iml files.
+*.?ml
 
 #MacOS
 *.DS_Store
