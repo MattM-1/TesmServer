@@ -1,0 +1,9 @@
+#Java byteode
+*.class
+
+#JetBrains
+**/.idea
+*.iml
+
+#MacOS
+*.DS_Store
