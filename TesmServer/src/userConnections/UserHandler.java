@@ -1,4 +1,4 @@
-package sample;
+package userConnections;
 
 import javafx.scene.control.TextArea;
 

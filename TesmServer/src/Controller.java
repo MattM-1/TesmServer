@@ -1,4 +1,4 @@
-package sample;
+import userConnections.*;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 
 public class Controller {
 

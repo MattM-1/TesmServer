@@ -1,4 +1,4 @@
-package sample;
+package receiveMessage;
 
 import javafx.scene.control.TextArea;
 

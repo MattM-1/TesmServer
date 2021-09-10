@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

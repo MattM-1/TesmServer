@@ -1,4 +1,4 @@
-package sample;
+import receiveMessage.*;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

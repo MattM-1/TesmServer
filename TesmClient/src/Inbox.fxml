@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" onMouseDragged="#rootMouseDragged" onMousePressed="#rootMousePressed" prefHeight="577.0" prefWidth="542.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InboxController">
+<AnchorPane fx:id="root" onMouseDragged="#rootMouseDragged" onMousePressed="#rootMousePressed" prefHeight="577.0" prefWidth="542.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InboxController">
    <children>
       <TextArea fx:id="inputTA" layoutX="11.0" layoutY="502.0" prefHeight="61.0" prefWidth="446.0" />
       <Button fx:id="sendButton" layoutX="463.0" layoutY="502.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="69.0" text="Send" />
