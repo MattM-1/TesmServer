@@ -66,12 +66,9 @@ public class Controller {
 
     @FXML
     public void rootMouseDragged(){
-        this.root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Main.stage.setX(event.getScreenX()-xOffset);
-                Main.stage.setY(event.getScreenY()-yOffset);
-            }
+        this.root.setOnMouseDragged(event -> {
+            Main.stage.setX(event.getScreenX()-xOffset);
+            Main.stage.setY(event.getScreenY()-yOffset);
         });
     }
 }
