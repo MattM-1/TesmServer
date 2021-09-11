@@ -2,7 +2,6 @@ import userConnections.*;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
