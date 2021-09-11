@@ -5,6 +5,7 @@
 **/.idea
 #should ignore xml and iml files.
 *.?ml
+/out
 
 #MacOS
 .DS_Store
