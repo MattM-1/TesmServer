@@ -49,12 +49,12 @@ public class Controller {
     }
 
     @FXML
-    public void closeWindow(MouseEvent mouseEvent) {
+    public void closeWindow() {
         System.exit(0);
     }
 
     @FXML
-    public void minimizeWindow(MouseEvent mouseEvent) {
+    public void minimizeWindow() {
         Main.stage.setIconified(true); //when maximizing the native system programs handle that so we don't need to worry
     }
 
