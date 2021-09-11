@@ -1,21 +1,17 @@
 import userConnections.*;
-
+import java.io.IOException;
+import javafx.fxml.FXML;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
-
 public class Controller {
-
     private double xOffset;
     private double yOffset;
-
     @FXML
     private AnchorPane root;
     @FXML
@@ -23,11 +19,8 @@ public class Controller {
     @FXML
     private Button launchButton;
     @FXML
-    private Button shutDownButton;
-    @FXML
     private TextArea activityWindow;
 
-    @FXML
     public void initialize(){
         Platform.runLater( () -> root.requestFocus() ); //No immediate focus on any nodes
         activityWindow.setEditable(false); //cannot edit the text inside
@@ -81,5 +74,4 @@ public class Controller {
             }
         });
     }
-
 }
