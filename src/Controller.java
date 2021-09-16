@@ -46,29 +46,29 @@ public class Controller {
     }
 
     @FXML
-    public void shutDownServer(){
+    private void shutDownServer(){
         System.exit(0);
     }
 
     @FXML
-    public void closeWindow() {
+    private void closeWindow() {
         System.exit(0);
     }
 
     @FXML
-    public void minimizeWindow(MouseEvent event) {
+    private void minimizeWindow(MouseEvent event) {
         Stage stage = getStageFromEvent(event);
         stage.setIconified(true);
     } //the native system programs handles maximizing
 
     @FXML
-    public void rootMousePressed(MouseEvent mouseEvent) {
+    private void rootMousePressed(MouseEvent mouseEvent) {
         this.xOffset = mouseEvent.getSceneX();
         this.yOffset = mouseEvent.getSceneY();
     }
 
     @FXML
-    public void rootMouseDragged(){
+    private void rootMouseDragged(){
         this.root.setOnMouseDragged(event -> {
             Stage stage = getStageFromEvent(event);
             stage.setX(event.getScreenX()-xOffset);
