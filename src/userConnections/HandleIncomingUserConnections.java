@@ -1,16 +1,13 @@
 package userConnections;
-
 import javafx.scene.control.TextArea;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
 public class HandleIncomingUserConnections extends Thread {
-
     private ServerSocket serverSocket;
     private TextArea activityWindow;
-    private ArrayList<UserHandler> connectionList; //package access
+    private ArrayList<UserHandler> connectionList;
 
     public HandleIncomingUserConnections(int port, TextArea activityWindow) throws IOException {
         this.serverSocket = new ServerSocket(port);
@@ -21,7 +18,6 @@ public class HandleIncomingUserConnections extends Thread {
     @Override
     public void run() {
         while(true){
-
             try{
                 UserHandler uh = new UserHandler(serverSocket.accept(), this.connectionList, this.activityWindow); //handle the user
                 uh.start();
@@ -29,8 +25,6 @@ public class HandleIncomingUserConnections extends Thread {
             } catch (IOException e) {
                 activityWindow.appendText("Failure on accepting an incoming connection.\n");
             }
-
         }
-
     }
 }

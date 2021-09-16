@@ -1,7 +1,5 @@
 package userConnections;
-
 import javafx.scene.control.TextArea;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -9,15 +7,12 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class UserHandler extends Thread {
-
     private ArrayList<UserHandler> connectionList;
     private TextArea activityWindow;
-
     private Socket connection;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private String name;
-
 
     public UserHandler(Socket socket, ArrayList<UserHandler> connectionList, TextArea activityWindow) throws IOException {
         this.connection = socket;;
@@ -66,10 +61,6 @@ public class UserHandler extends Thread {
 
     public Socket getSocket(){
         return this.connection;
-    }
-
-    public String getUserName(){
-        return this.name;
     }
 
     public void write(String message) throws IOException {
