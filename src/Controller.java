@@ -1,3 +1,6 @@
+import javafx.event.Event;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import userConnections.*;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -53,9 +56,10 @@ public class Controller {
     }
 
     @FXML
-    public void minimizeWindow() {
-        Main.stage.setIconified(true); //when maximizing the native system programs handle that so we don't need to worry
-    }
+    public void minimizeWindow(MouseEvent event) {
+        Stage stage = getStageFromEvent(event);
+        stage.setIconified(true);
+    } //the native system programs handles maximizing
 
     @FXML
     public void rootMousePressed(MouseEvent mouseEvent) {
@@ -66,8 +70,15 @@ public class Controller {
     @FXML
     public void rootMouseDragged(){
         this.root.setOnMouseDragged(event -> {
-            Main.stage.setX(event.getScreenX()-xOffset);
-            Main.stage.setY(event.getScreenY()-yOffset);
+            Stage stage = getStageFromEvent(event);
+            stage.setX(event.getScreenX()-xOffset);
+            stage.setY(event.getScreenY()-yOffset);
         });
+    }
+
+    private Stage getStageFromEvent(Event event){
+        Node node = (Node)event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        return stage;
     }
 }

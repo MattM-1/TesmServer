@@ -7,15 +7,12 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    static Stage stage = null;
-
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        this.stage = primaryStage;
-        primaryStage.initStyle(StageStyle.UNDECORATED); //this is to remove the native stage
+    public void start(Stage stage) throws Exception {
+        stage.initStyle(StageStyle.UNDECORATED); //this is to remove the native stage
         Parent root = FXMLLoader.load(getClass().getResource("Server.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     public static void main(String[] args) {
