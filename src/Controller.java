@@ -1,8 +1,6 @@
 import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.stage.Stage;
-import userConnections.*;
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -10,10 +8,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import userConnections.*;
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
 
 public class Controller {
     private double xOffset;
     private double yOffset;
+    private ExecutorService es;
     @FXML
     private AnchorPane root;
     @FXML
@@ -23,20 +25,37 @@ public class Controller {
     @FXML
     private TextArea activityWindow;
 
-    public void initialize(){
+    public void initialize() {
         Platform.runLater( () -> root.requestFocus() ); //No immediate focus on any nodes
         activityWindow.setEditable(false); //cannot edit the text inside
-        activityWindow.setFocusTraversable(false); //is not traversable with tab
-        activityWindow.setWrapText(true);
+        activityWindow.setFocusTraversable(false); //is not traversable with command+tab
+        activityWindow.setWrapText(true); //wraps text so that words aren't cut in half at the border of the window
+    }
+
+    private Stage getStageFromEvent(Event event) {
+        Node node = (Node)event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        return stage;
+    }
+
+    public void setExecutorService(ExecutorService es){
+        this.es=es;
+    }
+
+    //This calls stop(), which is Overridden in the Main.java to stop threads and properly close resources.
+    private void shutDown() {
+        Platform.exit();
     }
 
     @FXML
-    private void launchServer(){
+    private void launchServer() {
         try {
-            HandleIncomingUserConnections huc = new HandleIncomingUserConnections(Integer.parseInt(portNumber.getText()), this.activityWindow);
-            huc.start();
+            es.execute(new IncomingConnectionHandlerThread(Integer.parseInt(portNumber.getText()), this.activityWindow));
             this.launchButton.setDisable(true);
-            this.activityWindow.appendText("The server is now accepting incoming connections on port # "+portNumber.getText()+".\n");
+            this.activityWindow.appendText(
+                    "The server is now accepting incoming connections on port # "+
+                            portNumber.getText()+
+                            ".\n");
             this.portNumber.clear();
         } catch (IOException e) {
             activityWindow.appendText("Error when launching server socket.\n");
@@ -46,14 +65,14 @@ public class Controller {
     }
 
     @FXML
-    private void shutDownServer(){
-        System.exit(0);
-    }
+    private void shutDownServer() {
+        shutDown();
+    } //This method is separate from closeWindow() in case it is desired to perform different UI operations.
 
     @FXML
     private void closeWindow() {
-        System.exit(0);
-    }
+        shutDown();
+    } //This method is separate from shutDownServer() in case it is desired to perform different UI operations.
 
     @FXML
     private void minimizeWindow(MouseEvent event) {
@@ -68,17 +87,11 @@ public class Controller {
     }
 
     @FXML
-    private void rootMouseDragged(){
+    private void rootMouseDragged() {
         this.root.setOnMouseDragged(event -> {
             Stage stage = getStageFromEvent(event);
             stage.setX(event.getScreenX()-xOffset);
             stage.setY(event.getScreenY()-yOffset);
         });
-    }
-
-    private Stage getStageFromEvent(Event event){
-        Node node = (Node)event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        return stage;
     }
 }
